@@ -16,8 +16,22 @@
 
 
 # Comandi principali:
-### - Comando di run: poetry run uvicorn travel_agent_api.main:app --reload --port 8080
-### - Creare progetto: poetry new nome_progetto
-### - Installare le dipendenze: poetry install
-### - Attivare l'ambiente virtuale: poetry env activate
-### - Aggiungere libreria: poetry add nome_libreria
+### - Comando di run:
+```bash
+poetry run uvicorn nome_progetto.main:app --reload --port 8080
+```
+### - Creare progetto:
+```bash
+poetry new nome_progetto
+```
+### - Installare le dipendenze:
+```bash
+poetry install
+```
+### - Attivare l'ambiente virtuale:
+```bash
+poetry env activate
+```
+### - Aggiungere libreria:
+```bash
+poetry add nome_libreria
