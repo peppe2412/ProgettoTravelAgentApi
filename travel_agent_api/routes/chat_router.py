@@ -45,7 +45,10 @@ def chat_completion(request: ChatRequestCompletion):
     messages_dict = [{"role": msg.role, "content": msg.content} for msg in request.messages]
     response = agent.run(messages=messages_dict)
     
+    ai_response = [msg.content for msg in response if msg.__class__.__name__ == 'AIMessage']
+    text_response = ai_response[-1] if ai_response else 'Nessuna risposta'
+    
     # print('*' * 80)
     # print('chat_completion')
     # print('*' * 80)
-    return {'response':response}
+    return {'response':text_response}
