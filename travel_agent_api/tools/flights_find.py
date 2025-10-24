@@ -46,7 +46,7 @@ def flight_finder(params:FlightsInput):
     
     try:
         params = {
-            "api_key" : os.getenv('OPENAI_API_KEY'),
+            "api_key" : os.getenv('SERPAPI_API_KEY'),
             "engine": "google_flights",
             "departure_id": params.departure,
             "arrival_id": params.arrival,
@@ -60,10 +60,26 @@ def flight_finder(params:FlightsInput):
         
         search = GoogleSearch(params)
         
-        # print('*' * 80)
-        # print('flight_finder')
-        # print('*' * 80)
         return search.get_dict()
     
     except Exception as e:
-        return str(e)
+        print('Errore API:', e)
+        return {
+            'error': 'Non sono riuscito a recupare voli al momento'
+        }
+        
+# if __name__ == '__main__':
+#     from pprint import pprint
+#     test = {
+#         'params': {
+#             'departure':'FCO',
+#             'arrival':'PMO',
+#             'outbound_date':'2025-11-16',
+#             'return_date':'2025-11-23',
+#             'adults':1,
+#             'childrens':0
+#         },
+#     }
+    
+#     result = flight_finder.invoke(test)
+#     pprint(result)
